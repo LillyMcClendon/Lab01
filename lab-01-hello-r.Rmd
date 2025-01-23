@@ -28,26 +28,26 @@ The datasaurus_dozen file contains 1846 rows and 3 columns. The variables in the
 
 ### Exercise 2
 
-The answers for this exercise are already provided to help guide you. Clean up the narrative to reflect what you want to submit. Let’s break it into steps:
-
-First, let's plot the data in the dino dataset:
+Plot the data in the dino dataset:
 
 ```{r plot-dino, fig.height=3, fig.width=6}
 dino_data <- datasaurus_dozen %>%
   filter(dataset == "dino")
-
+```
+###Visualize the data 
+```{r plot-dino, fig.height=3, fig.width=6}
 ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
   geom_point()
 ```
 
-Next, let's calculate the correlation between `x` and `y` in this dataset:
+Calculate the correlation between `x` and `y` in this dataset:
 
 ```{r cor-dino}
 dino_data %>%
   summarize(r = cor(x, y))
 ```
-Once you’ve cleaned up the text, add your own explanation or observations here!
 
+Some pairs of the variables do not have a linear relationship. Therefore, you first visualize the data so that you can determine if there is a non-linear relationship. If there is a nonlinear relationship, you do not calculate the correlation coefficient (r). 
 
 ### Exercise 3
 
@@ -57,13 +57,31 @@ Note that the R chunks are labeled with `plot-star` and `cor-star` to provide sp
 To finish, clean up the narrative by removing these instructions.
 
 ```{r plot-star}
+library(tidyverse) 
+library(plot-star)
 
+plot-star %>%
+  count(dataset) %>%
+  print(13)
 ```
+
+```{r plot-star, fig.height=3, fig.width=6}
+star_data <- datasaurus_dozen %>%
+  filter(dataset == "star")
+```
+
+###Visualize the data 
+```{r plot-star, fig.height=3, fig.width=6}
+ggplot(data = star_data, mapping = aes(x = x, y = y)) +
+  geom_point()
+```
+
 
 I'm some filler text, you should replace me with more meaningful text...
 
 ```{r cor-star}
-
+star_data %>%
+  summarize(r = cor(x, y))
 ```
 Add your explanation here—what did you notice?
 
