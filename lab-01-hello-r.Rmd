@@ -28,20 +28,19 @@ The datasaurus_dozen file contains 1846 rows and 3 columns. The variables in the
 
 ### Exercise 2
 
-Plot the data in the dino dataset:
-
+###Plot the dino data in the dino dataset:
 ```{r plot-dino, fig.height=3, fig.width=6}
 dino_data <- datasaurus_dozen %>%
   filter(dataset == "dino")
 ```
-###Visualize the data 
-```{r plot-dino, fig.height=3, fig.width=6}
+
+###Visualize the dino data 
+```{r plot-dino2, fig.height=3, fig.width=6}
 ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
   geom_point()
 ```
 
-Calculate the correlation between `x` and `y` in this dataset:
-
+###Calculate the correlation between `x` and `y` in this dataset:
 ```{r cor-dino}
 dino_data %>%
   summarize(r = cor(x, y))
@@ -51,39 +50,25 @@ Some pairs of the variables do not have a linear relationship. Therefore, you fi
 
 ### Exercise 3
 
-This is your turn to write the code and narrative for the star dataset. Follow the same steps as above to complete the analysis. Don't forget to label your chunks appropriately!
-
-Note that the R chunks are labeled with `plot-star` and `cor-star` to provide spaces to place the code for plotting and calculating the correlation coefficient.
-To finish, clean up the narrative by removing these instructions.
-
-```{r plot-star}
-library(tidyverse) 
-library(plot-star)
-
-plot-star %>%
-  count(dataset) %>%
-  print(13)
-```
-
+###Plot the star data in the dataset 
 ```{r plot-star, fig.height=3, fig.width=6}
 star_data <- datasaurus_dozen %>%
   filter(dataset == "star")
 ```
 
-###Visualize the data 
-```{r plot-star, fig.height=3, fig.width=6}
+###Visualize the star data 
+```{r plot-star2, fig.height=3, fig.width=6}
 ggplot(data = star_data, mapping = aes(x = x, y = y)) +
   geom_point()
 ```
 
-
-I'm some filler text, you should replace me with more meaningful text...
-
+###Calculate the correlation between `x` and `y` in the star data:
 ```{r cor-star}
 star_data %>%
   summarize(r = cor(x, y))
 ```
-Add your explanation here—what did you notice?
+
+The correlation coefficient (measure of strength and direction of a linear relationship between two variables) of the dinosaur and the star are both around -0.06 which as it is close to zero indicates almost no correlation. Despite being more angular, the star also does not have a linear relationship. The data in the dinosaur when plotted forms curved lines while the star consists of more straight lines. However, the correlation coefficient (r) of the dionsaur and the star are quite similar. 
 
 
 ### Exercise 4
