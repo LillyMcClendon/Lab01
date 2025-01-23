@@ -5,6 +5,8 @@ date: "01-22-2025"
 output: 
   html_document: 
     fig_width: 6
+    highlight: kate
+    theme: cerulean
 ---
 
 ## Load packages and data
@@ -27,19 +29,19 @@ The datasaurus_dozen file contains 1846 rows and 3 columns. The variables in the
 
 ### Exercise 2
 
-###Plot the dino data in the dino dataset:
+#### Plot the dino data in the dino dataset:
 ```{r plot-dino, fig.height=3, fig.width=6}
 dino_data <- datasaurus_dozen %>%
   filter(dataset == "dino")
 ```
 
-###Visualize the dino data 
+#### Visualize the dino data 
 ```{r plot-dino2, fig.height=3, fig.width=6}
 ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
   geom_point()
 ```
 
-###Calculate the correlation between `x` and `y` in this dataset:
+#### Calculate the correlation between `x` and `y` in this dataset:
 ```{r cor-dino}
 dino_data %>%
   summarize(r = cor(x, y))
@@ -49,19 +51,19 @@ Some pairs of the variables do not have a linear relationship. Therefore, you fi
 
 ### Exercise 3
 
-###Plot the star data in the dataset 
+#### Plot the star data in the dataset 
 ```{r plot-star, fig.height=3, fig.width=3}
 star_data <- datasaurus_dozen %>%
   filter(dataset == "star")
 ```
 
-###Visualize the star data 
+#### Visualize the star data 
 ```{r visualize-star, fig.height=3, fig.width=3}
 ggplot(data = star_data, mapping = aes(x = x, y = y)) +
   geom_point()
 ```
 
-###Calculate the correlation between `x` and `y` in the star data:
+#### Calculate the correlation between `x` and `y` in the star data:
 ```{r cor-star}
 star_data %>%
   summarize(r = cor(x, y))
@@ -72,18 +74,18 @@ The correlation coefficient (measure of strength and direction of a linear relat
 
 ### Exercise 4
 
-###Plot the circle data in the dataset 
+#### Plot the circle data in the dataset 
 ```{r plot-circle, fig.height=3, fig.width=6}
 circle_data <- datasaurus_dozen %>%
   filter(dataset == "circle")
 ```
 
-###Visualize the circle data 
+#### Visualize the circle data 
 ```{r visualize-circle2, fig.height=4, fig.width=4}
 ggplot(data = circle_data, mapping = aes(x = x, y = y)) +
   geom_point()
 ```
-###Calculate the correlation between `x` and `y` in the circle data:
+#### Calculate the correlation between `x` and `y` in the circle data:
 ```{r cor-circle}
 circle_data %>%
   summarize(r = cor(x, y))
@@ -92,17 +94,34 @@ The r value of the circle data is -0.07 which is quite similar to the r value of
 
 ### Exercise 5
 
-###Facet by the dataset variable 
+#### Facet by the dataset variable 
 ```{r facet, fig.height=5, fig.width=3}
 ggplot(datasaurus_dozen, aes(x = x, y = y, color = dataset)) +
   geom_point() +
   facet_wrap(~dataset, ncol = 3) +
   theme(legend.position = "none")
 ```
-###Generate summary correlation coefficients
+#### Generate summary correlation coefficients
 ```{r summary-correlation-coefficients}
 datasaurus_dozen %>%
   group_by(dataset) %>%
   summarize(r = cor(x, y)) %>%
   print(13)
+```
+## Emojis 
+
+### Install emoji package 
+```{r install emo package}
+#install.packages("emo")
+```
+
+### Search emoji 
+```{r search emoji}
+library(emojifont)
+search_emoji('smile')
+```
+
+### Use emoji 
+```{r use emoji}
+cat("This is the end of Lab 01!", emoji("smiley_cat") )
 ```
