@@ -57,7 +57,7 @@ star_data <- datasaurus_dozen %>%
 ```
 
 ###Visualize the star data 
-```{r plot-star2, fig.height=3, fig.width=6}
+```{r visualize-star, fig.height=3, fig.width=6}
 ggplot(data = star_data, mapping = aes(x = x, y = y)) +
   geom_point()
 ```
@@ -73,15 +73,23 @@ The correlation coefficient (measure of strength and direction of a linear relat
 
 ### Exercise 4
 
-Add your code and narrative to complete this exercise. Use the conventions from the previous exercises to name your chunks and organize your work.
-
-```{r}
-
+###Plot the circle data in the dataset 
+```{r plot-circle, fig.height=3, fig.width=6}
+circle_data <- datasaurus_dozen %>%
+  filter(dataset == "circle")
 ```
 
-```{r}
-
+###Visualize the circle data 
+```{r visualize-circle2, fig.height=3, fig.width=6}
+ggplot(data = circle_data, mapping = aes(x = x, y = y)) +
+  geom_point()
 ```
+###Calculate the correlation between `x` and `y` in the circle data:
+```{r cor-circle}
+circle_data %>%
+  summarize(r = cor(x, y))
+```
+The r value of the circle data is -0.07 which is quite similar to the r value of the dino data which was -0.06. Both the r values indicate there is almost no correlation between the two variables. 
 
 ### Exercise 5
 
