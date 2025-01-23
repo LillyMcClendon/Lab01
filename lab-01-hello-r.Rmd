@@ -1,7 +1,7 @@
 ---
 title: "Lab 01 - Hello R"
 author: "Lilly McClendon"
-date: "01-22-2025"
+date: "01-23-2025"
 output: 
   html_document: 
     fig_width: 6
@@ -17,9 +17,9 @@ library(datasauRus)
 
 datasaurus_dozen %>%
   count(dataset) %>%
-  print(13)
-
+  print()
 ```
+#print(13) removed as output was not correct when knitting
 
 ## Exercises
 
@@ -47,6 +47,7 @@ dino_data %>%
   summarize(r = cor(x, y))
 ```
 
+#### Observations 
 Some pairs of the variables do not have a linear relationship. Therefore, you first visualize the data so that you can determine if there is a non-linear relationship. If there is a nonlinear relationship, you do not calculate the correlation coefficient (r). 
 
 ### Exercise 3
@@ -69,6 +70,7 @@ star_data %>%
   summarize(r = cor(x, y))
 ```
 
+#### Observations 
 The correlation coefficient (measure of strength and direction of a linear relationship between two variables) of the dinosaur and the star are both around -0.06 which as it is close to zero indicates almost no correlation. Despite being more angular, the star also does not have a linear relationship. The data in the dinosaur when plotted forms curved lines while the star consists of more straight lines. However, the correlation coefficient (r) of the dionsaur and the star are quite similar. 
 
 
@@ -85,11 +87,14 @@ circle_data <- datasaurus_dozen %>%
 ggplot(data = circle_data, mapping = aes(x = x, y = y)) +
   geom_point()
 ```
+
 #### Calculate the correlation between `x` and `y` in the circle data:
+
 ```{r cor-circle}
 circle_data %>%
   summarize(r = cor(x, y))
 ```
+#### Observations 
 The r value of the circle data is -0.07 which is quite similar to the r value of the dino data which was -0.06. Both the r values indicate there is almost no correlation between the two variables. 
 
 ### Exercise 5
@@ -101,18 +106,22 @@ ggplot(datasaurus_dozen, aes(x = x, y = y, color = dataset)) +
   facet_wrap(~dataset, ncol = 3) +
   theme(legend.position = "none")
 ```
+
 #### Generate summary correlation coefficients
+
 ```{r summary-correlation-coefficients}
 datasaurus_dozen %>%
   group_by(dataset) %>%
   summarize(r = cor(x, y)) %>%
-  print(13)
+  print()
 ```
+#print(13) removed as coefficients did not show when knitting  
+
 ## Emojis 
 
 ### Install emoji package 
 ```{r install emo package}
-#install.packages("emo")
+#install.packages("emoji")
 ```
 
 ### Search emoji 
